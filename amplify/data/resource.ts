@@ -16,7 +16,7 @@ const schema = a.schema({
       openingGrawl: a.string(),
       director: a.string(),
       releaseDate: a.string(),
-      films: a.hasMany("Person", "personId"),
+      persons: a.hasMany("Person", "personId"),
     })
     .authorization((allow) => [allow.owner()]),
   Person: a
