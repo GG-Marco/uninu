@@ -19,7 +19,7 @@ const schema = a.schema({
       mass: a.integer(),
       skinColor: a.string(),
       personId: a.id(),
-      person: a.belongsTo("Film", "personId"),
+      film: a.belongsTo("Film", "personId"),
     })
     .authorization((allow) => [allow.owner()]),
   Film: a
