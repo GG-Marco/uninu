@@ -8,17 +8,6 @@ specifies that any unauthenticated user can "create", "read", "update",
 and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
-  Film: a
-    .model({
-      filmId: a.id().required(),
-      title: a.string(),
-      episodeID: a.integer(),
-      openingGrawl: a.string(),
-      director: a.string(),
-      releaseDate: a.string(),
-      persons: a.hasMany("Person", "personId"),
-    })
-    .authorization((allow) => [allow.owner()]),
   Person: a
     .model({
       name: a.string(),
@@ -33,6 +22,17 @@ const schema = a.schema({
       person: a.belongsTo("Film", "personId"),
     })
     .authorization((allow) => [allow.owner()]),
+  Film: a
+    .model({
+      title: a.string().required(),
+      episodeID: a.integer(),
+      openingGrawl: a.string(),
+      director: a.string(),
+      releaseDate: a.string(),
+      persons: a.hasMany("Person", "personId"),
+    })
+    .authorization((allow) => [allow.owner()]),
+
   sayHello: a
     .query()
     .arguments({
